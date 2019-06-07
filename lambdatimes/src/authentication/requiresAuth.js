@@ -12,8 +12,22 @@ const requiresAuth = LoginPage => {
 				};
 			}
 
+			componentDidMount() {
+				const { loggedIn } = this.state;
+
+				if (localStorage.hasOwnProperty(loggedIn) && localStorage.getItem(loggedIn)) {
+					const getUsername = JSON.parse(localStorage.getItem('loggedIn'));
+
+					this.setState(prevState => ({
+						loggedIn: getUsername
+					}));
+				}
+			}
+
 			render() {
-				return <LoginPage />;
+				const { loggedIn } = this.setState;
+
+				return loggedIn ? <NewsPage /> : <LoginPage />;
 			}
 		};
 	};

@@ -1,29 +1,15 @@
 import React from 'react';
-import { Container, Row, Col, Form, Button, Label, Input, FormGroup, Card } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+import { FormContainer } from './Form';
+import { Navigation } from './Navigation';
 
 export const Login = () => {
 	return (
-		<Container>
+		<Container style={{ height: '100vh' }}>
 			<Row>
-				<Col sm={{ size: 4, offset: 4 }}>
-					<Card body>
-						<h1>login</h1>
-						<Form>
-							<FormGroup>
-								<Label for="username">Username</Label>
-								<Input type="text" name="username" id="username" />
-							</FormGroup>
-
-							<FormGroup>
-								<Label for="password">Password</Label>
-								<Input type="password" id="password" name="password" />
-							</FormGroup>
-
-							<Button type="button" color="success">
-								login
-							</Button>
-						</Form>
-					</Card>
+				<Col>
+					<Navigation />
+					<FormContainer />
 				</Col>
 			</Row>
 		</Container>
