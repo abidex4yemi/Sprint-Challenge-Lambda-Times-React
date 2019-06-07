@@ -13,9 +13,8 @@ const requiresAuth = LoginPage => {
 			}
 
 			componentDidMount() {
-				const { loggedIn } = this.state;
-
-				if (localStorage.hasOwnProperty(loggedIn) && localStorage.getItem(loggedIn)) {
+				if (localStorage.hasOwnProperty('loggedIn') && localStorage.getItem('loggedIn')) {
+					console.log(localStorage.getItem('loggedIn'));
 					const getUsername = JSON.parse(localStorage.getItem('loggedIn'));
 
 					this.setState(prevState => ({
