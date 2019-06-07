@@ -1,40 +1,57 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { FormContainer } from './Form';
 import { Navigation } from './Navigation';
 
-export const Login = () => {
-	const [loggedIn, setLoggedIn] = useState(false);
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
+export class Login extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			loggedIn: false,
+			username: '',
+			password: ''
+		};
+	}
 
-	const handleLogin = () => {
-		if (username.trim() !== '') {
-			setLoggedIn(true);
-			localStorage.setItem('loggedIn', JSON.stringify(loggedIn));
-			localStorage.setItem('username', JSON.stringify(username));
-			window.location.reload();
-		}
+	handleLogin = () => {
+		this.setState(prevState => {
+			const { username } = prevState;
+
+			if (username.trim() !== '') {
+				localStorage.setItem('loggedIn', JSON.stringify(true));
+				localStorage.setItem('username', JSON.stringify(username));
+
+				window.location.reload();
+				return {
+					loggedIn: true
+				};
+			}
+		});
 	};
 
-	const inputChange = (field, value) => {
-		if (field === 'username') {
-			setUsername(value);
-		}
-
-		if (field === 'password') {
-			setPassword(value);
-		}
+	inputChange = (field, value) => {
+		this.setState(prevState => ({
+			[field]: value
+		}));
 	};
 
-	return (
-		<Container style={{ height: '100vh' }}>
-			<Row>
-				<Col>
-					<Navigation />
-					<FormContainer inputChange={inputChange} username={username} password={password} handleLogin={handleLogin} />
-				</Col>
-			</Row>
-		</Container>
-	);
-};
+	render() {
+		const { username, password } = this.state;
+
+		return (
+			<Container style={{ height: '100vh' }}>
+				<Row>
+					<Col>
+						<Navigation />
+						<FormContainer
+							inputChange={this.inputChange}
+							username={username}
+							password={password}
+							handleLogin={this.handleLogin}
+						/>
+					</Col>
+				</Row>
+			</Container>
+		);
+	}
+}
