@@ -35,7 +35,7 @@ const ContainerLeft = styled.div`
 	align-items: center;
 	flex-direction: row;
 	flex: 1;
-	font-size: 11px;
+	font-size: 16px;
 
 	& span {
 		cursor: pointer;
@@ -72,18 +72,30 @@ const ContainerRight = styled.div`
 	align-items: center;
 	flex-direction: row;
 	flex: 1;
-	font-size: 11px;
+	font-size: 20px;
 	font-weight: bold;
 
-	& span {
+	& button {
 		cursor: pointer;
+		width: 100px;
+		height: 30px;
+		font-size: 1rem;
+		color: maroon;
+		border: 0;
+		border: 1px solid maroon;
+
+		&:hover {
+			color: #333333;
+		}
 	}
 `;
 
 // Refactor this component to use styled components and not classNames.
 // You can find the corresponding CSS in the CSS/index.css file
 
-const TopBar = () => {
+const TopBar = props => {
+	const { toggle } = props;
+
 	return (
 		<TopBarStyles>
 			<Container>
@@ -99,7 +111,9 @@ const TopBar = () => {
 					<span>ANNOUNCEMENTS</span>
 				</ContainerCenter>
 				<ContainerRight>
-					<span>LOG IN</span>
+					<button type="button" onClick={() => toggle()}>
+						log in
+					</button>
 				</ContainerRight>
 			</Container>
 		</TopBarStyles>
