@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { News } from './components/pages/news/News';
+import { AuthenticateNewsPage } from './authentication/requiresAuth';
 
 const AppStyles = styled.div`
 	display: flex;
@@ -19,7 +19,7 @@ const AppStyles = styled.div`
 const App = () => {
 	return (
 		<AppStyles>
-			<News />
+			<AuthenticateNewsPage />
 		</AppStyles>
 	);
 };
