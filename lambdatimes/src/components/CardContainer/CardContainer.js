@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Tabs from './Tabs';
-import Cards from './Cards';
+import Tabs from '../Tabs/Tabs';
+import Cards from '../CardContainer/Cards';
 import Carousel from '../Carousel/Carousel';
 
 // Importing our tab and card data.
@@ -14,13 +14,13 @@ const initialState = {
 	cards: []
 };
 
-const ContentStyles = styled.div`
+const CardContainerStyles = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 `;
 
-export default class Content extends Component {
+export default class CardContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = initialState;
@@ -65,11 +65,11 @@ export default class Content extends Component {
 		const { selected } = this.state;
 
 		return (
-			<ContentStyles>
+			<CardContainerStyles>
 				<Tabs tabs={this.state.tabs} changeSelected={this.changeSelected} selectedTab={selected} />
 				<Carousel />
 				<Cards cards={this.filterCards()} />
-			</ContentStyles>
+			</CardContainerStyles>
 		);
 	}
 }

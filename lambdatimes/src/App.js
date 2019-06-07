@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import TopBar from './components/TopBar';
-import Header from './components/Header';
-import Content from './components/Content/Content';
+import { News } from './components/pages/news/News';
 
 const AppStyles = styled.div`
 	display: flex;
@@ -21,9 +19,7 @@ const AppStyles = styled.div`
 const App = () => {
 	return (
 		<AppStyles>
-			<TopBar />
-			<Header />
-			<Content />
+			<News />
 		</AppStyles>
 	);
 };
