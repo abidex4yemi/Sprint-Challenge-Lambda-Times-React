@@ -80,8 +80,6 @@ export default class Carousel extends Component {
 		const { carouselData, current } = this.state;
 		const carouselLength = carouselData.length;
 
-		const newCurrent = current - 1;
-
 		if (current === 0) {
 			this.setState(prevState => ({
 				current: carouselLength - 1
@@ -91,7 +89,6 @@ export default class Carousel extends Component {
 				current: current - 1
 			}));
 		}
-		console.log(newCurrent);
 	};
 
 	rightClick = () => {
