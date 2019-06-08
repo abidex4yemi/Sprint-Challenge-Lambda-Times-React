@@ -75,7 +75,7 @@ export const News = () => {
 						</Form>
 					</ModalBody>
 					<ModalFooter>
-						<Button color="secondary" size="lg" onClick={() => toggle()}>
+						<Button color="secondary" size="lg" onClick={() => toggle()} block>
 							Close
 						</Button>{' '}
 						<Button
@@ -85,6 +85,7 @@ export const News = () => {
 								handleLogin();
 								toggle();
 							}}
+							block
 						>
 							login
 						</Button>
